@@ -52,13 +52,13 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
     <Sidebar collapsible="icon">
       <SidebarContent>
         <div className="flex items-center gap-2 px-3 py-4">
-            <span className={`${collapsed ? "hidden" : ""} font-display text-lg font-bold tracking-tight`}>
+            <span className={`${collapsed ? "hidden" : ""} font-display text-base font-bold tracking-tight`}>
               JUTC LOGO
             </span>
         </div>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-wide">Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {navItems.map(({to, icon: Icon, label}) => (
@@ -70,7 +70,7 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
                     <NavLink
                       to={to}
                       end
-                      className="text-lg h-[3rem]"
+                      className="h-10 text-base"
                       activeClassName="text-primary font-medium"
                     >
                       <Icon size={ICON_SIZE.nav} className="mr-2" />
@@ -86,14 +86,14 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
         <div className="mt-auto flex flex-col gap-1 p-3">
           <button
             onClick={toggleTheme}
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="flex items-center gap-3 rounded-lg px-3 py-2 text-base text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             <ThemeIcon size={ICON_SIZE.nav} />
             <span className={`${collapsed ? "hidden" : ""}`}>Toggle theme</span>
           </button>
           <button
             onClick={onLogout}
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-lg text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
+            className="flex items-center gap-3 rounded-lg px-3 py-2 text-base text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
           >
             <LogOut size={ICON_SIZE.nav} />
             <span className={`${collapsed ? "hidden" : ""}`}>Logout</span>
