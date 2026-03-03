@@ -10,7 +10,6 @@ import {
   Moon,
 } from "lucide-react";
 import { ICON_SIZE } from "@/lib/icons/iconSizes";
-import { useLocation } from "react-router-dom";
 import { useTheme } from "@/hooks/useTheme";
 import { NavLink } from "@/components/NavLink";
 import {
