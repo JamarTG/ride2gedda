@@ -10,7 +10,6 @@ import {
   Moon,
 } from "lucide-react";
 import { ICON_SIZE } from "@/lib/icons/iconSizes";
-import { DynamicIcon } from "@/lib/icons/DynamicIcon";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "@/hooks/useTheme";
 import { NavLink } from "@/components/NavLink";
@@ -45,8 +44,9 @@ interface AppLayoutProps {
 function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
-  const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+
+  const ThemeIcon = theme === "light" ? Moon : Sun;
 
   return (
     <Sidebar collapsible="icon">
@@ -55,32 +55,26 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary">
             <Bus size={ICON_SIZE.sidebar} className="text-primary-foreground" />
           </div>
-          {!collapsed && (
-            <span className="font-display text-lg font-bold tracking-tight">
+            <span className={`${collapsed ? "hidden" : ""} font-display text-lg font-bold tracking-tight`}>
               JUTC
             </span>
-          )}
         </div>
 
         <SidebarGroup>
           <SidebarGroupLabel>Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {navItems.map((item) => (
-                <SidebarMenuItem key={item.to}>
+              {navItems.map(({to, icon: Icon, label}) => (
+                <SidebarMenuItem key={to}>
                   <SidebarMenuButton asChild>
                     <NavLink
-                      to={item.to}
+                      to={to}
                       end
                       className="hover:bg-muted/50"
                       activeClassName="bg-muted text-primary font-medium"
                     >
-                      <DynamicIcon
-                        Icon={item.icon}
-                        size={ICON_SIZE.nav}
-                        className="mr-2"
-                      />
-                      {!collapsed && <span>{item.label}</span>}
+                      <Icon size={ICON_SIZE.nav} className="mr-2" />
+                      <span className={`${collapsed ? "hidden" : ""}`}>{label}</span>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -94,19 +88,15 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
             onClick={toggleTheme}
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
-            {theme === "light" ? (
-              <Moon size={ICON_SIZE.nav} />
-            ) : (
-              <Sun size={ICON_SIZE.nav} />
-            )}
-            {!collapsed && <span>Toggle theme</span>}
+            <ThemeIcon size={ICON_SIZE.nav} />
+            <span className={`${collapsed ? "hidden" : ""}`}>Toggle theme</span>
           </button>
           <button
             onClick={onLogout}
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
           >
             <LogOut size={ICON_SIZE.nav} />
-            {!collapsed && <span>Logout</span>}
+            <span className={`${collapsed ? "hidden" : ""}`}>Logout</span>
           </button>
         </div>
       </SidebarContent>
