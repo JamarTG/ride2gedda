@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useReports, useSubmitReport } from "@/hooks/useReports";
 import { ReportCategory, ReportStatus } from "@/types";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "@/hooks/use-toast";
 

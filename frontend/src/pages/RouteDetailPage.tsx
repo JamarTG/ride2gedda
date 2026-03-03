@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useRoute } from "@/hooks/useRoutes";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
 export default function RouteDetailPage() {
   const { id } = useParams<{ id: string }>();

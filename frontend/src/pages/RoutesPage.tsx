@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useRoutes } from "@/hooks/useRoutes";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
 export default function RoutesPage() {
   const [search, setSearch] = useState("");

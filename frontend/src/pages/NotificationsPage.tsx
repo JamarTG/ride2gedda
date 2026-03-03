@@ -2,7 +2,7 @@ import { Bell, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useNotifications } from "@/hooks/useNotifications";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
 const typeStyles: Record<string, string> = {
   info: "border-l-primary",

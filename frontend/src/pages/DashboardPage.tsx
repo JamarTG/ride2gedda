@@ -6,7 +6,7 @@ import { useNotifications } from "@/hooks/useNotifications";
 import { useWebSocket } from "@/hooks/useWebSocket";
 import { Link } from "react-router-dom";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
 const fadeIn = { hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } };
 
@@ -14,7 +14,7 @@ export default function DashboardPage() {
   const { data: metrics, isLoading: metricsLoading } = useDashboardMetrics();
   const { data: favorites } = useFavorites();
   const { data: notifications } = useNotifications();
-  const { isConnected, lastMessage } = useWebSocket();
+  const { isConnected } = useWebSocket();
 
   const unreadCount = notifications?.filter((n) => !n.read).length ?? 0;
 
