@@ -26,10 +26,10 @@ const navItems = [
 
 interface AppLayoutProps {
   children: React.ReactNode;
-  onLogout: () => void;
+  onLogout: VoidFunction;
 }
 
-function AppSidebar({ onLogout }: { onLogout: () => void }) {
+function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
   const location = useLocation();
