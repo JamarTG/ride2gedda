@@ -8,6 +8,7 @@ import {
   LogOut,
   Sun,
   Moon,
+  TestTube,
 } from "lucide-react";
 import { ICON_SIZE } from "@/lib/icons/iconSizes";
 import { useTheme } from "@/hooks/useTheme";
@@ -51,11 +52,8 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
     <Sidebar collapsible="icon">
       <SidebarContent>
         <div className="flex items-center gap-2 px-3 py-4">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary">
-            <Bus size={ICON_SIZE.sidebar} className="text-primary-foreground" />
-          </div>
             <span className={`${collapsed ? "hidden" : ""} font-display text-lg font-bold tracking-tight`}>
-              JUTC
+              JUTC LOGO
             </span>
         </div>
 
@@ -65,19 +63,22 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
             <SidebarMenu>
               {navItems.map(({to, icon: Icon, label}) => (
                 <SidebarMenuItem key={to}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton
+                    asChild
+                    className="hover:bg-transparent active:bg-transparent data-[active=true]:bg-transparent hover:text-primary"
+                  >
                     <NavLink
                       to={to}
                       end
-                      className="hover:bg-muted/50"
-                      activeClassName="bg-muted text-primary font-medium"
+                      className="text-lg h-[3rem]"
+                      activeClassName="text-primary font-medium"
                     >
                       <Icon size={ICON_SIZE.nav} className="mr-2" />
                       <span className={`${collapsed ? "hidden" : ""}`}>{label}</span>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-              ))}
+              ))}  
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -85,14 +86,14 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
         <div className="mt-auto flex flex-col gap-1 p-3">
           <button
             onClick={toggleTheme}
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="flex items-center gap-3 rounded-lg px-3 py-2 text-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             <ThemeIcon size={ICON_SIZE.nav} />
             <span className={`${collapsed ? "hidden" : ""}`}>Toggle theme</span>
           </button>
           <button
             onClick={onLogout}
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
+            className="flex items-center gap-3 rounded-lg px-3 py-2 text-lg text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
           >
             <LogOut size={ICON_SIZE.nav} />
             <span className={`${collapsed ? "hidden" : ""}`}>Logout</span>
