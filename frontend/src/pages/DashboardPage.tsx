@@ -1,20 +1,30 @@
 import { motion } from "framer-motion";
-import { MapPin, Users, Clock, AlertTriangle, Star, ArrowRight } from "lucide-react";
+import {
+  IconMapPin,
+  IconUsers,
+  IconClock,
+  IconAlertTriangle,
+  IconStar,
+  IconArrowRight,
+} from "@tabler/icons-react";
+
 import { Card, CardContent } from "@/components/ui/card";
-import { useDashboardMetrics, useFavorites, useDemandPredictions } from "@/hooks/useDashboard";
+import { useDashboardMetrics, useFavorites } from "@/hooks/useDashboard";
 import { Link } from "react-router-dom";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/utils";
 import { useNotifications } from "@/hooks/useNotifications";
+import { notificationCategoryMeta } from "@/constants/notificationCategories";
+import { createElement } from "react";
 
 const fadeIn = { hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } };
 
-function getGreeting() {
-  const hour = new Date().getHours();
-  if (hour < 12) return "Morning";
-  if (hour < 18) return "Afternoon";
-  return "Evening";
-}
+// function getGreeting() {
+//   const hour = new Date().getHours();
+//   if (hour < 12) return "Morning";
+//   if (hour < 18) return "Afternoon";
+//   return "Evening";
+// }
 
 export default function DashboardPage() {
   const { data: metrics, isLoading: metricsLoading } = useDashboardMetrics();
@@ -25,25 +35,38 @@ export default function DashboardPage() {
   // const unreadCount = notifications?.filter((n) => !n.read).length ?? 0;
 
   const statCards = [
-    { label: "Active Routes", value: metrics?.activeRoutes, icon: MapPin, color: "text-secondary" },
-    { label: "Riders Today", value: metrics?.totalRiders?.toLocaleString(), icon: Users, color: "text-primary" },
-    { label: "Avg Wait", value: metrics?.avgWaitTime ? `${metrics.avgWaitTime} min` : undefined, icon: Clock, color: "text-warning" },
-    { label: "Open Reports", value: metrics?.openReports, icon: AlertTriangle, color: "text-destructive" },
+    { label: "Active Routes", value: metrics?.activeRoutes, icon: IconMapPin },
+    {
+      label: "Riders Today",
+      value: metrics?.totalRiders?.toLocaleString(),
+      icon: IconUsers,
+    },
+    {
+      label: "Avg Wait",
+      value: metrics?.avgWaitTime ? `${metrics.avgWaitTime} min` : undefined,
+      icon: IconClock,
+    },
+    {
+      label: "Open Reports",
+      value: metrics?.openReports,
+      icon: IconAlertTriangle,
+    },
   ];
 
   return (
     <div className="space-y-6">
-{/*       
+      {/*       
       <div className="flex items-center gap-2 text-xs text-muted-foreground">
         <span className={cn("h-2 w-2 rounded-full", isConnected ? "bg-success animate-pulse-dot" : "bg-destructive")} />
         {isConnected ? "Live updates active" : "Reconnecting…"}
         <Wifi className="ml-auto h-3 w-3" />
       </div> */}
 
-      
       <div>
-        <h1 className="font-display text-2xl md:text-3xl font-bold">Good {getGreeting()}, Commuter 👋</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Here's what's happening across Kingston's bus network</p>
+        {/* <h1 className="font-display text-2xl md:text-3xl font-bold">Good {getGreeting()}, Commuter 👋</h1> */}
+        <p className="mt-1 text-sm text-muted-foreground">
+          Here's what's happening across Kingston's bus network
+        </p>
       </div>
 
       <motion.div
@@ -52,18 +75,18 @@ export default function DashboardPage() {
         initial="hidden"
         animate="visible"
       >
-        {statCards.map(({ label, value, icon: Icon, color }) => (
+        {statCards.map(({ label, value, icon: Icon }) => (
           <motion.div key={label} variants={fadeIn}>
             <Card className="border">
               <CardContent className="flex items-center gap-3 p-4">
-                <div className={cn("rounded-xl bg-muted p-2.5", color)}>
-                  <Icon className="h-5 w-5" />
+                <div className="rounded-xl bg-muted p-2.5 text-primary">
+                  <Icon className="h-6" />
                 </div>
                 <div>
                   {metricsLoading ? (
                     <Skeleton className="mb-1 h-6 w-12" />
                   ) : (
-                    <p className="font-display text-xl font-bold">{value}</p>
+                    <p className="font-display text-2xl font-bold">{value}</p>
                   )}
                   <p className="text-xs text-muted-foreground">{label}</p>
                 </div>
@@ -76,10 +99,13 @@ export default function DashboardPage() {
       <section>
         <div className="mb-3 flex items-center justify-between">
           <h2 className="font-display text-lg font-semibold flex items-center gap-2">
-            <Star className="h-4 w-4 text-primary" /> Favorite Routes
+            <IconStar className="h-4 w-4 text-primary" /> Favorite Routes
           </h2>
-          <Link to="/routes" className="text-xs font-medium text-primary hover:underline flex items-center gap-1">
-            All routes <ArrowRight className="h-3 w-3" />
+          <Link
+            to="/routes"
+            className="text-xs font-medium text-primary hover:underline flex items-center gap-1"
+          >
+            All routes <IconArrowRight className="h-3 w-3" />
           </Link>
         </div>
         <div className="grid gap-3 sm:grid-cols-2">
@@ -97,7 +123,9 @@ export default function DashboardPage() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-display text-lg font-bold text-secondary">{fav.nextArrival} min</p>
+                    <p className="font-display text-lg font-bold text-secondary">
+                      {fav.nextArrival} min
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -106,31 +134,26 @@ export default function DashboardPage() {
         </div>
       </section>
 
-      
       <section>
         <div className="mb-3 flex items-center justify-between">
           <h2 className="font-display text-lg font-semibold">
             Unread Notifications (3)
           </h2>
-          <Link to="/notifications" className="text-xs font-medium text-primary hover:underline flex items-center gap-1">
-            View all <ArrowRight className="h-3 w-3" />
+          <Link
+            to="/notifications"
+            className="text-xs font-medium text-primary hover:underline flex items-center gap-1"
+          >
+            View all <IconArrowRight className="h-3 w-3" />
           </Link>
         </div>
         <div className="space-y-2">
           {notifications?.slice(0, 3).map((n) => (
-            // Only unread notifications should be shown here 
-
             <Card key={n.id} className="border">
               <CardContent className="flex items-start gap-3 p-3">
-                <span
-                  className={cn(
-                    "mt-0.5 h-2 w-2 shrink-0 rounded-full",
-                    n.type === "warning" && "bg-warning",
-                    n.type === "alert" && "bg-destructive",
-                    n.type === "success" && "bg-success",
-                    n.type === "info" && "bg-primary"
-                  )}
-                />
+                {createElement(
+                  notificationCategoryMeta[n.notificationCategory].Icon,
+                  { className: "h-5 w-5 shrink-0" },
+                )}
                 <div>
                   <p className="text-sm font-medium">{n.title}</p>
                   <p className="text-xs text-muted-foreground">{n.message}</p>

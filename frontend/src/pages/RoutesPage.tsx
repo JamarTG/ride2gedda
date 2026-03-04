@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, MapPin, ChevronRight } from "lucide-react";
+import {
+  IconSearch,
+  IconMapPin,
+  IconChevronRight,
+} from "@tabler/icons-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -20,7 +24,7 @@ export default function RoutesPage() {
       </div>
 
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
           placeholder="Search routes, stops, destinations…"
           value={search}
@@ -58,13 +62,13 @@ export default function RoutesPage() {
                         </Badge>
                       </div>
                       <div className="mt-1 flex items-center gap-1 text-sm text-muted-foreground">
-                        <MapPin className="h-4" />
+                        <IconMapPin className="h-4" />
                         <span>{route.stops.length} stops</span>
                         <span className="mx-1">·</span>
                         <span>{route.frequency}</span>
                       </div>
                     </div>
-                    <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground" />
+                    <IconChevronRight className="h-5 w-5 shrink-0 text-muted-foreground" />
                   </CardContent>
                 </Card>
               </Link>
@@ -72,7 +76,7 @@ export default function RoutesPage() {
 
         {routes?.length === 0 && (
           <div className="py-12 text-center text-muted-foreground">
-            <MapPin className="mx-auto mb-2 h-8 w-8" />
+            <IconMapPin className="mx-auto mb-2 h-8 w-8" />
             <p className="font-medium">No routes found</p>
             <p className="text-sm">Try a different search term</p>
           </div>

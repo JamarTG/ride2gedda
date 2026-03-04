@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Bus, Mail, Lock, User, ArrowRight } from "lucide-react";
+import {
+  IconBus,
+  IconMail,
+  IconLock,
+  IconUser,
+  IconArrowRight,
+} from "@tabler/icons-react";
+
+
+
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -44,7 +54,7 @@ export default function AuthPage({ onLogin, onSignup }: AuthPageProps) {
         
         <div className="mb-8 text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary shadow-lg">
-            <Bus className="h-9 w-9 text-primary-foreground" />
+            <IconBus className="h-9 w-9 text-primary-foreground" />
           </div>
           <h1 className="font-display text-5xl font-bold tracking-tight">ride2gedda.com 🇯🇲</h1>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -65,7 +75,7 @@ export default function AuthPage({ onLogin, onSignup }: AuthPageProps) {
             <form onSubmit={handleSubmit} className="space-y-4">
               {mode === "signup" && (
                 <div className="relative">
-                  <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                  <IconUser className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     placeholder="Full name"
                     value={name}
@@ -76,7 +86,7 @@ export default function AuthPage({ onLogin, onSignup }: AuthPageProps) {
                 </div>
               )}
               <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <IconMail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="email"
                   placeholder="Email"
@@ -87,7 +97,7 @@ export default function AuthPage({ onLogin, onSignup }: AuthPageProps) {
                 />
               </div>
               <div className="relative">
-                <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <IconLock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="password"
                   placeholder="Password"
@@ -99,7 +109,7 @@ export default function AuthPage({ onLogin, onSignup }: AuthPageProps) {
               </div>
               <Button type="submit" className="w-full gap-2 font-semibold" disabled={loading}>
                 {loading ? "Please wait…" : mode === "login" ? "Sign In" : "Create Account"}
-                <ArrowRight className="h-4 w-4" />
+                <IconArrowRight className="h-4 w-4" />
               </Button>
             </form>
             <div className="mt-6 text-center text-sm">

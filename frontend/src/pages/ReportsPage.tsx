@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { AlertTriangle, ThumbsUp, Plus, Send } from "lucide-react";
+import {
+  IconThumbUp,
+  IconPlus,
+  IconSend
+} from "@tabler/icons-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,15 +15,7 @@ import { ReportCategory, ReportStatus } from "@/types";
 import { cn } from "@/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "@/hooks/use-toast";
-
-const categoryLabels: Record<ReportCategory, string> = {
-  [ReportCategory.Delay]: "🕐 Delay",
-  [ReportCategory.Safety]: "🛡️ Safety",
-  [ReportCategory.Overcrowding]: "👥 Overcrowding",
-  [ReportCategory.Breakdown]: "🔧 Breakdown",
-  [ReportCategory.RouteChange]: "🔀 Route Change",
-  [ReportCategory.Other]: "📋 Other",
-};
+import { categoryMeta } from "@/constants/reportCategories";
 
 const statusColors: Record<ReportStatus, string> = {
   [ReportStatus.Open]: "bg-warning text-warning-foreground",
@@ -58,7 +54,7 @@ export default function ReportsPage() {
           <p className="mt-1 text-sm text-muted-foreground">Report issues and view community updates</p>
         </div>
         <Button onClick={() => setShowForm(!showForm)} size="sm" className="gap-1 text-sm font-medium">
-          <Plus className="h-4 w-4" /> Report
+          <IconPlus className="h-4 w-4" /> Report
         </Button>
       </div>
 
@@ -69,7 +65,7 @@ export default function ReportsPage() {
               <CardContent className="p-4">
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div className="flex flex-wrap gap-2">
-                    {Object.entries(categoryLabels).map(([key, label]) => (
+                    {Object.entries(categoryMeta).map(([key, meta]) => (
                       <button
                         key={key}
                         type="button"
@@ -81,14 +77,15 @@ export default function ReportsPage() {
                             : "bg-muted text-muted-foreground border-transparent hover:border-border"
                         )}
                       >
-                        {label}
+                        <meta.Icon className="mr-1.5 inline-block h-5 w-5" />
+                        {meta.label}
                       </button>
                     ))}
                   </div>
                   <Input placeholder="Report title" value={title} onChange={(e) => setTitle(e.target.value)} required />
                   <Textarea placeholder="Describe the issue…" value={description} onChange={(e) => setDescription(e.target.value)} rows={3} required />
                   <Button type="submit" disabled={submitReport.isPending} className="gap-1">
-                    <Send className="h-4 w-4" /> Submit
+                    <IconSend className="h-4 w-4" /> Submit
                   </Button>
                 </form>
               </CardContent>
@@ -106,7 +103,14 @@ export default function ReportsPage() {
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-2 mb-1">
-                        <span className="text-xs">{categoryLabels[r.category]}</span>
+                        <span className="inline-flex items-center gap-1.5 text-md">
+                          {(() => {
+                            const meta = categoryMeta[r.category];
+                            const Icon = meta.Icon;
+                            return <Icon className="h-5" />;
+                          })()}
+                          {categoryMeta[r.category].label}
+                        </span>
                         <Badge className={cn("text-[10px] px-1.5 py-0", statusColors[r.status])}>{r.status}</Badge>
                       </div>
                       <p className="text-sm font-semibold">{r.title}</p>
@@ -118,8 +122,8 @@ export default function ReportsPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-1 rounded-lg bg-muted px-2 py-1 text-xs">
-                      <ThumbsUp className="h-3 w-3" />
-                      <span className="font-medium">{r.upvotes}</span>
+                      <IconThumbUp fill="" className="text-gray-200 h-" />
+                      <span className="font-medium text-lg">{r.upvotes}</span>
                     </div>
                   </div>
                 </CardContent>

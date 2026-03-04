@@ -1,4 +1,4 @@
-import { BarChart3, TrendingUp } from "lucide-react";
+import { IconChartBar, IconTrendingUp } from "@tabler/icons-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDemandPredictions } from "@/hooks/useDashboard";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -22,7 +22,7 @@ export default function PredictionChartPage() {
     <div className="space-y-5">
       <div>
         <h1 className="font-display text-2xl md:text-3xl font-bold flex items-center gap-2">
-          <BarChart3 className="h-6 w-6 text-primary" /> AI Demand Predictions
+          <IconChartBar className="h-6 w-6 text-primary" /> AI Demand Predictions
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Machine learning model forecasting rider demand across all routes
@@ -32,7 +32,7 @@ export default function PredictionChartPage() {
       {peakHour && (
         <Card className="border bg-primary/10">
           <CardContent className="flex items-center gap-3 p-4">
-            <TrendingUp className="h-5 w-5 text-primary" />
+            <IconTrendingUp className="h-5 w-5 text-primary" />
             <div>
               <p className="text-sm font-semibold">Peak Hour: {peakHour.label}</p>
               <p className="text-xs text-muted-foreground">

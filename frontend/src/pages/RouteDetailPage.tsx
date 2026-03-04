@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, MapPin, Clock, Zap } from "lucide-react";
+import { IconArrowLeft, IconMapPin, IconClock} from '@tabler/icons-react';
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useRoute } from "@/hooks/useRoutes";
@@ -34,7 +35,7 @@ export default function RouteDetailPage() {
   return (
     <div className="space-y-5">
       <Link to="/routes" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
-        <ArrowLeft className="h-4 w-4" /> Back
+        <IconArrowLeft className="h-4 w-4" /> Back
       </Link>
 
       
@@ -60,7 +61,7 @@ export default function RouteDetailPage() {
       <Card className="border">
         <CardHeader className="pb-2">
           <CardTitle className="font-display text-base flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-secondary" /> Stops & AI Predictions
+            <IconMapPin className="h-4 w-4 text-secondary" /> Stops & AI Predictions
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -89,9 +90,9 @@ export default function RouteDetailPage() {
                     </div>
                     {arrival && (
                       <div className="flex items-center gap-1.5 rounded-lg bg-muted px-2.5 py-1">
-                        <Clock className="h-3 w-3 text-muted-foreground" />
+                        <IconClock className="h-3 w-3 text-muted-foreground" />
                         <span className="font-display text-sm font-bold">{arrival.estimatedMinutes} min</span>
-                        <Zap className="h-3 w-3 text-primary" />
+                        {/* <IconZap className="h-3 w-3 text-primary" /> */}
                         <span className="text-[10px] text-muted-foreground">{Math.round(arrival.confidence * 100)}%</span>
                       </div>
                     )}

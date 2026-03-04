@@ -6,7 +6,7 @@ import type {
   FavoriteRoute,
   DashboardMetrics,
 } from "@/types";
-import { ReportCategory, ReportStatus } from "@/types";
+import { NotificationCategory, ReportCategory, ReportStatus } from "@/types";
 
 export const mockRoutes: BusRoute[] = [
   {
@@ -79,10 +79,10 @@ export const mockReports: CommunityReport[] = [
 ];
 
 export const mockNotifications: Notification[] = [
-  { id: "n1", title: "Route 1A Delay", message: "Expected 15-minute delay due to traffic on Hope Road.", type: "warning", routeId: "r1", read: false, createdAt: "2026-03-03T08:45:00Z" },
-  { id: "n2", title: "Route 3C Suspended", message: "Service temporarily suspended due to breakdown at Mona.", type: "alert", routeId: "r3", read: false, createdAt: "2026-03-03T09:15:00Z" },
-  { id: "n3", title: "Fare Update", message: "New fares take effect March 10. Check the app for details.", type: "info", read: true, createdAt: "2026-03-02T12:00:00Z" },
-  { id: "n4", title: "Report Resolved", message: "Your report about Papine stop lighting has been resolved.", type: "success", read: false, createdAt: "2026-03-03T07:00:00Z" },
+  { id: "n1", title: "Route 1A Delay", message: "Expected 15-minute delay due to traffic on Hope Road.", notificationCategory: NotificationCategory.Delay, routeId: "r1", read: false, createdAt: "2026-03-03T08:45:00Z" },
+  { id: "n2", title: "Route 3C Suspended", message: "Service temporarily suspended due to breakdown at Mona.", notificationCategory: NotificationCategory.Breakdown, routeId: "r3", read: false, createdAt: "2026-03-03T09:15:00Z" },
+  { id: "n3", title: "Fare Update", message: "New fares take effect March 10. Check the app for details.", notificationCategory: NotificationCategory.Info, read: true, createdAt: "2026-03-02T12:00:00Z" },
+  { id: "n4", title: "Report Resolved", message: "Your report about Papine stop lighting has been resolved.", notificationCategory: NotificationCategory.Success, read: false, createdAt: "2026-03-03T07:00:00Z" },
 ];
 
 export const mockDemandPredictions: DemandPrediction[] = [
