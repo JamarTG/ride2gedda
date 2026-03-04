@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
+import { OutlineBadge } from "@/components/OutlineBadge";
 import { useReports, useSubmitReport } from "@/hooks/useReports";
 import { ReportCategory, ReportStatus } from "@/types";
 import { cn } from "@/utils";
@@ -17,10 +17,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "@/hooks/use-toast";
 import { categoryMeta } from "@/constants/reportCategories";
 
-const statusColors: Record<ReportStatus, string> = {
-  [ReportStatus.Open]: "bg-warning text-warning-foreground",
-  [ReportStatus.Acknowledged]: "bg-primary text-primary-foreground",
-  [ReportStatus.Resolved]: "bg-success text-success-foreground",
+const statusTone: Record<ReportStatus, "warning" | "primary" | "success"> = {
+  [ReportStatus.Open]: "warning",
+  [ReportStatus.Acknowledged]: "primary",
+  [ReportStatus.Resolved]: "success",
 };
 
 export default function ReportsPage() {
@@ -111,7 +111,7 @@ export default function ReportsPage() {
                           })()}
                           {categoryMeta[r.category].label}
                         </span>
-                        <Badge className={cn("text-[10px] px-1.5 py-0", statusColors[r.status])}>{r.status}</Badge>
+                        <OutlineBadge tone={statusTone[r.status]}>{r.status}</OutlineBadge>
                       </div>
                       <p className="text-sm font-semibold">{r.title}</p>
                       <p className="mt-1 text-xs text-muted-foreground">{r.description}</p>

@@ -7,7 +7,7 @@ import {
 } from "@tabler/icons-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { OutlineBadge } from "@/components/OutlineBadge";
 import { useRoutes } from "@/hooks/useRoutes";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/utils";
@@ -51,15 +51,9 @@ export default function RoutesPage() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <p className="truncate text-sm font-semibold">{route.name}</p>
-                        <Badge
-                          variant={route.isActive ? "default" : "secondary"}
-                          className={cn(
-                            "text-[10px] px-1.5 py-0",
-                            route.isActive ? "bg-success text-success-foreground" : ""
-                          )}
-                        >
+                        <OutlineBadge tone={route.isActive ? "success" : "muted"}>
                           {route.isActive ? "Live" : "Inactive"}
-                        </Badge>
+                        </OutlineBadge>
                       </div>
                       <div className="mt-1 flex items-center gap-1 text-sm text-muted-foreground">
                         <IconMapPin className="h-4" />
