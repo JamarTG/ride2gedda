@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  IconSearch,
-  IconMapPin,
-  IconChevronRight,
-} from "@tabler/icons-react";
+import { IconSearch, IconMapPin, IconChevronRight } from "@tabler/icons-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { OutlineBadge } from "@/components/OutlineBadge";
 import { useRoutes } from "@/hooks/useRoutes";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/utils";
 
 export default function RoutesPage() {
   const [search, setSearch] = useState("");
@@ -19,8 +14,12 @@ export default function RoutesPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="font-display text-2xl md:text-3xl font-bold">Bus Routes</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Browse and search all JUTC routes</p>
+        <h1 className="font-display text-2xl md:text-3xl font-bold">
+          Bus Routes
+        </h1>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Browse and search all JUTC routes
+        </p>
       </div>
 
       <div className="relative">
@@ -42,16 +41,16 @@ export default function RoutesPage() {
               <Link key={route.id} to={`/routes/${route.id}`}>
                 <Card className="border transition-all hover:bg-primary/10 hover:-translate-y-0.5 cursor-pointer">
                   <CardContent className="flex items-center gap-4 p-4">
-                    <span
-                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl font-display text-base font-bold text-primary-foreground"
-                      style={{ backgroundColor: route.color }}
-                    >
-                      {route.number}
-                    </span>
+                    <b className={`text-4xl border p-4 ${route.isActive ? "text-primary border-primary" : "text-muted-foreground border-border"} rounded-sm`}>{route.number}</b>
+
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <p className="truncate text-sm font-semibold">{route.name}</p>
-                        <OutlineBadge tone={route.isActive ? "success" : "muted"}>
+                        <p className="truncate text-sm font-semibold">
+                          {route.name}
+                        </p>
+                        <OutlineBadge
+                          tone={route.isActive ? "success" : "muted"}
+                        >
                           {route.isActive ? "Live" : "Inactive"}
                         </OutlineBadge>
                       </div>
