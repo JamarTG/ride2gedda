@@ -52,8 +52,8 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
     <Sidebar collapsible="icon">
       <SidebarContent>
         <div className="flex items-center gap-2 px-3 py-4">
-            <span className={`${collapsed ? "hidden" : ""} font-display text-base font-bold tracking-tight`}>
-              JUTC LOGO
+            <span className={`${collapsed ? "hidden" : ""} font-display text-base font-bold tracking-tight text-primary`}>
+              ride2gedda.com 🇯🇲
             </span>
         </div>
 
@@ -112,9 +112,9 @@ export default function AppLayout({ children, onLogout }: AppLayoutProps) {
         <div className="flex-1 flex flex-col">
           <header className="h-12 flex items-center border-b bg-card/80 backdrop-blur-lg sticky top-0 z-50">
             <SidebarTrigger className="ml-2" />
-            <span className="ml-2 font-display text-sm font-semibold">
-              JUTC Smart Commute
-            </span>
+            {/* <span className="ml-2 font-display text-sm font-semibold">
+              ride2gedda 🇯🇲
+            </span> */}
           </header>
           <main className="flex-1 p-4">{children}</main>
         </div>
