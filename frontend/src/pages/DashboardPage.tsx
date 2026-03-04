@@ -114,7 +114,7 @@ export default function DashboardPage() {
               <Card className="border transition-shadow hover:shadow-lg cursor-pointer">
                 <CardContent className="flex items-center justify-between p-4">
                   <div className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary font-display text-sm font-bold text-primary-foreground">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary font-display text-sm font-bold text-secondary">
                       {fav.routeNumber}
                     </span>
                     <div>
@@ -123,7 +123,7 @@ export default function DashboardPage() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-display text-lg font-bold text-secondary">
+                    <p className="font-display text-lg font-bold">
                       {fav.nextArrival} min
                     </p>
                   </div>
