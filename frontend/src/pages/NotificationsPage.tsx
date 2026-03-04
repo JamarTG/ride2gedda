@@ -4,12 +4,6 @@ import { useNotifications } from "@/hooks/useNotifications";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/utils";
 
-const typeStyles: Record<string, string> = {
-  info: "border-l-primary",
-  warning: "border-l-warning",
-  alert: "border-l-destructive",
-  success: "border-l-success",
-};
 
 export default function NotificationsPage() {
   const { data: notifications, isLoading } = useNotifications();
@@ -29,7 +23,7 @@ export default function NotificationsPage() {
           : notifications?.map((n) => (
               <Card
                 key={n.id}
-                className={cn("border-0 border-l-4 shadow-md", typeStyles[n.type])}
+                className={cn("border")}
               >
                 <CardContent className="flex items-start gap-3 p-4">
                   <div className="flex-1">

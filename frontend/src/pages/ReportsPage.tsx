@@ -65,7 +65,7 @@ export default function ReportsPage() {
       <AnimatePresence>
         {showForm && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
-            <Card className="border-0 shadow-lg">
+            <Card className="border">
               <CardContent className="p-4">
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div className="flex flex-wrap gap-2">
@@ -101,7 +101,7 @@ export default function ReportsPage() {
         {isLoading
           ? Array.from({ length: 3 }).map((_, i) => <Skeleton key={i} className="h-24 w-full rounded-lg" />)
           : reports?.map((r) => (
-              <Card key={r.id} className="border-0 shadow-md">
+              <Card key={r.id} className="border">
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1">

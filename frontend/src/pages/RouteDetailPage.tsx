@@ -57,7 +57,7 @@ export default function RouteDetailPage() {
       </div>
 
       
-      <Card className="border-0 shadow-lg">
+      <Card className="border ">
         <CardHeader className="pb-2">
           <CardTitle className="font-display text-base flex items-center gap-2">
             <MapPin className="h-4 w-4 text-secondary" /> Stops & AI Predictions
