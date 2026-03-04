@@ -1,24 +1,9 @@
-# Ride2Gedda
 
+<img width="1165" height="612" alt="localhost_8080_routes (2)" src="https://github.com/user-attachments/assets/4bfadeaf-8ad3-4cce-8c09-e15201aece49" />
+<br><br><br>
 A community-driven Jamaican bus commute app that helps riders plan and navigate JUTC bus journeys more confidently using official schedules, community reports, and AI-assisted predictions.
 
----
 
-## Preview
-
-<p align="center">
-  <img src="frontend/public/screenshots/dashboard.png" alt="Ride2Gedda dashboard" width="800" />
-</p>
-
-<p align="center">
-  <img src="frontend/public/screenshots/routes.png" alt="Ride2Gedda routes list" width="800" />
-</p>
-
-<p align="center">
-  <img src="frontend/public/screenshots/login.png" alt="Ride2Gedda login screen" width="420" />
-</p>
-
----
 
 ## Features
 
@@ -28,51 +13,3 @@ A community-driven Jamaican bus commute app that helps riders plan and navigate 
 - **Community reports** for delays, breakdowns, overcrowding, and route changes
 - **Notifications** for important service updates
 - **Light/dark theme** with a modern, accessible UI
-
----
-
-## Project Structure
-
-This repository is organized as a full-stack project:
-
-- **frontend/** – Vite + React + TypeScript + Tailwind CSS app
-- **backend/** – Server-side APIs and services (implementation TBD / in progress)
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (LTS recommended)
-- npm or pnpm/yarn
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-The app will start on the local development port shown in the terminal (typically http://localhost:5173).
-
-### Backend
-
-Backend setup and APIs are still being designed. This section can be expanded once the backend is implemented.
-
----
-
-## Contributing
-
-Contributions, ideas, and feedback are welcome. If you would like to contribute:
-
-1. Fork the repository
-2. Create a feature branch
-3. Open a pull request with a clear description of your changes
-
----
-
-## License
-
-This project is currently unpublished under a specific license. Please contact the repository owner before using it in production or commercial contexts.
