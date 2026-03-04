@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useRoutes } from "@/hooks/useRoutes";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
 export default function RoutesPage() {
   const [search, setSearch] = useState("");
@@ -15,12 +15,12 @@ export default function RoutesPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="font-display text-2xl font-bold">Bus Routes</h1>
-        <p className="text-sm text-muted-foreground">Browse and search all JUTC routes</p>
+        <h1 className="font-display text-2xl md:text-3xl font-bold">Bus Routes</h1>
+        <p className="mt-1 text-sm text-muted-foreground">Browse and search all JUTC routes</p>
       </div>
 
       <div className="relative">
-        <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
           placeholder="Search routes, stops, destinations…"
           value={search}
@@ -29,14 +29,14 @@ export default function RoutesPage() {
         />
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-3 flex flex-col">
         {isLoading
           ? Array.from({ length: 4 }).map((_, i) => (
               <Skeleton key={i} className="h-20 w-full rounded-lg" />
             ))
           : routes?.map((route) => (
               <Link key={route.id} to={`/routes/${route.id}`}>
-                <Card className="border-0 shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5 cursor-pointer">
+                <Card className="border transition-all hover:bg-primary/10 hover:-translate-y-0.5 cursor-pointer">
                   <CardContent className="flex items-center gap-4 p-4">
                     <span
                       className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl font-display text-base font-bold text-primary-foreground"
@@ -57,8 +57,8 @@ export default function RoutesPage() {
                           {route.isActive ? "Live" : "Inactive"}
                         </Badge>
                       </div>
-                      <div className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
-                        <MapPin className="h-3 w-3" />
+                      <div className="mt-1 flex items-center gap-1 text-sm text-muted-foreground">
+                        <MapPin className="h-4" />
                         <span>{route.stops.length} stops</span>
                         <span className="mx-1">·</span>
                         <span>{route.frequency}</span>
@@ -69,6 +69,7 @@ export default function RoutesPage() {
                 </Card>
               </Link>
             ))}
+
         {routes?.length === 0 && (
           <div className="py-12 text-center text-muted-foreground">
             <MapPin className="mx-auto mb-2 h-8 w-8" />

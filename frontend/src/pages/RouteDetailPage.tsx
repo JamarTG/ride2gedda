@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useRoute } from "@/hooks/useRoutes";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
 export default function RouteDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -40,13 +40,13 @@ export default function RouteDetailPage() {
       
       <div className="flex items-start gap-4">
         <span
-          className="flex h-14 w-14 items-center justify-center rounded-2xl font-display text-lg font-bold text-primary-foreground shadow-lg"
+          className="flex h-14 w-14 items-center justify-center rounded-2xl font-display text-xl font-bold text-primary-foreground shadow-lg"
           style={{ backgroundColor: route.color }}
         >
           {route.number}
         </span>
         <div>
-          <h1 className="font-display text-xl font-bold">{route.name}</h1>
+          <h1 className="font-display text-2xl md:text-3xl font-bold">{route.name}</h1>
           <div className="mt-1 flex items-center gap-2 text-sm text-muted-foreground">
             <Badge variant={route.isActive ? "default" : "secondary"} className={cn(route.isActive && "bg-success text-success-foreground")}>
               {route.isActive ? "Active" : "Inactive"}
@@ -57,7 +57,7 @@ export default function RouteDetailPage() {
       </div>
 
       
-      <Card className="border-0 shadow-lg">
+      <Card className="border">
         <CardHeader className="pb-2">
           <CardTitle className="font-display text-base flex items-center gap-2">
             <MapPin className="h-4 w-4 text-secondary" /> Stops & AI Predictions

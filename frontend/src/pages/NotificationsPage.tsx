@@ -2,14 +2,8 @@ import { Bell, Check } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useNotifications } from "@/hooks/useNotifications";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
-const typeStyles: Record<string, string> = {
-  info: "border-l-primary",
-  warning: "border-l-warning",
-  alert: "border-l-destructive",
-  success: "border-l-success",
-};
 
 export default function NotificationsPage() {
   const { data: notifications, isLoading } = useNotifications();
@@ -17,10 +11,10 @@ export default function NotificationsPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="font-display text-2xl font-bold flex items-center gap-2">
+        <h1 className="font-display text-2xl md:text-3xl font-bold flex items-center gap-2">
           <Bell className="h-6 w-6 text-primary" /> Notifications
         </h1>
-        <p className="text-sm text-muted-foreground">Stay informed about route changes and alerts</p>
+        <p className="mt-1 text-sm text-muted-foreground">Stay informed about route changes and alerts</p>
       </div>
 
       <div className="space-y-3">
@@ -29,7 +23,7 @@ export default function NotificationsPage() {
           : notifications?.map((n) => (
               <Card
                 key={n.id}
-                className={cn("border-0 border-l-4 shadow-md", typeStyles[n.type])}
+                className={cn("border")}
               >
                 <CardContent className="flex items-start gap-3 p-4">
                   <div className="flex-1">

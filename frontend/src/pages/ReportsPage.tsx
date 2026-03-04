@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useReports, useSubmitReport } from "@/hooks/useReports";
 import { ReportCategory, ReportStatus } from "@/types";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "@/hooks/use-toast";
 
@@ -52,12 +52,12 @@ export default function ReportsPage() {
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-3">
         <div>
-          <h1 className="font-display text-2xl font-bold">Community Reports</h1>
-          <p className="text-sm text-muted-foreground">Report issues and view community updates</p>
+          <h1 className="font-display text-2xl md:text-3xl font-bold">Community Reports</h1>
+          <p className="mt-1 text-sm text-muted-foreground">Report issues and view community updates</p>
         </div>
-        <Button onClick={() => setShowForm(!showForm)} size="sm" className="gap-1">
+        <Button onClick={() => setShowForm(!showForm)} size="sm" className="gap-1 text-sm font-medium">
           <Plus className="h-4 w-4" /> Report
         </Button>
       </div>
@@ -65,7 +65,7 @@ export default function ReportsPage() {
       <AnimatePresence>
         {showForm && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
-            <Card className="border-0 shadow-lg">
+            <Card className="border">
               <CardContent className="p-4">
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div className="flex flex-wrap gap-2">
@@ -101,7 +101,7 @@ export default function ReportsPage() {
         {isLoading
           ? Array.from({ length: 3 }).map((_, i) => <Skeleton key={i} className="h-24 w-full rounded-lg" />)
           : reports?.map((r) => (
-              <Card key={r.id} className="border-0 shadow-md">
+              <Card key={r.id} className="border">
                 <CardContent className="p-4">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1">
