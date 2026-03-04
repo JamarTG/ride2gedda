@@ -11,7 +11,7 @@ import { NotificationCategory, ReportCategory, ReportStatus } from "@/types";
 export const mockRoutes: BusRoute[] = [
   {
     id: "r1",
-    name: "Half Way Tree → Downtown Kingston",
+    name: "Half Way Tree to Downtown Kingston",
     number: "1A",
     color: "hsl(48, 96%, 53%)",
     origin: "Half Way Tree",
@@ -27,7 +27,7 @@ export const mockRoutes: BusRoute[] = [
   },
   {
     id: "r2",
-    name: "Portmore → Kingston",
+    name: "Portmore to Kingston",
     number: "2B",
     color: "hsl(160, 60%, 36%)",
     origin: "Portmore Mall",
@@ -42,7 +42,7 @@ export const mockRoutes: BusRoute[] = [
   },
   {
     id: "r3",
-    name: "Papine → Cross Roads",
+    name: "Papine to Cross Roads",
     number: "3C",
     color: "hsl(0, 0%, 15%)",
     origin: "Papine",
@@ -57,7 +57,7 @@ export const mockRoutes: BusRoute[] = [
   },
   {
     id: "r4",
-    name: "Spanish Town → Kingston",
+    name: "Spanish Town to Kingston",
     number: "4D",
     color: "hsl(48, 96%, 53%)",
     origin: "Spanish Town",
@@ -105,8 +105,8 @@ export const mockDemandPredictions: DemandPrediction[] = [
 ];
 
 export const mockFavorites: FavoriteRoute[] = [
-  { routeId: "r1", routeName: "Half Way Tree → Downtown", routeNumber: "1A", nextArrival: 3 },
-  { routeId: "r2", routeName: "Portmore → Kingston", routeNumber: "2B", nextArrival: 7 },
+  { routeId: "r1", routeName: "Half Way Tree to Downtown", origin: "Half Way Tree", destination: "Downtown", routeNumber: "1A", nextArrival: 3 },
+  { routeId: "r2", routeName: "Portmore to Kingston", origin: "Portmore", destination: "Kingston", routeNumber: "2B", nextArrival: 7 },
 ];
 
 export const mockMetrics: DashboardMetrics = {

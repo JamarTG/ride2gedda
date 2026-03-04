@@ -126,6 +126,8 @@ export interface FavoriteRoute {
   routeName: string;
   routeNumber: string;
   nextArrival: number;
+  origin: string;
+  destination: string;
 }
 
 export interface DashboardMetrics {

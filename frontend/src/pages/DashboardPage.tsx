@@ -16,6 +16,7 @@ import { cn } from "@/utils";
 import { useNotifications } from "@/hooks/useNotifications";
 import { notificationCategoryMeta } from "@/constants/notificationCategories";
 import { createElement } from "react";
+import { ArrowBigRight, MoveRight } from "lucide-react";
 
 const fadeIn = { hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } };
 
@@ -118,7 +119,12 @@ export default function DashboardPage() {
                       {fav.routeNumber}
                     </span>
                     <div>
-                      <p className="text-sm font-medium">{fav.routeName}</p>
+                      {/* <p className="text-sm font-medium">{fav.routeName}</p> */}
+                      <p className="text-sm font-medium">
+                        {fav.origin}{" "}
+                        <ArrowBigRight className="h-3 w-3 inline-block" />{" "}
+                        {fav.destination}
+                      </p>
                       <p className="text-xs text-muted-foreground">Next bus</p>
                     </div>
                   </div>
