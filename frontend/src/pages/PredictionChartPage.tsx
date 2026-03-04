@@ -29,7 +29,7 @@ export default function PredictionChartPage() {
         </p>
       </div>
 
-      {peakHour && (
+      {/* {peakHour && (
         <Card className="border bg-primary/10">
           <CardContent className="flex items-center gap-3 p-4">
             <IconTrendingUp className="h-5 w-5 text-primary" />
@@ -41,7 +41,7 @@ export default function PredictionChartPage() {
             </div>
           </CardContent>
         </Card>
-      )}
+      )} */}
 
       <Card className="border">
         <CardHeader className="pb-2">

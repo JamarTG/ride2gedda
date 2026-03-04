@@ -53,12 +53,10 @@ export default function AuthPage({ onLogin, onSignup }: AuthPageProps) {
       >
         
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary shadow-lg">
-            <IconBus className="h-9 w-9 text-primary-foreground" />
-          </div>
-          <h1 className="font-display text-5xl font-bold tracking-tight">ride2gedda.com 🇯🇲</h1>
+       
+          <h1 className="font-display text-5xl font-bold tracking-tight">ride2gedda.com</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            Your intelligent companion fi navigating Jamaica's bus system
+            Your companion for navigating Jamaica's bus system
           </p>
         </div>
 
