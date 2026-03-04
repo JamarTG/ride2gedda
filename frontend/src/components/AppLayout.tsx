@@ -93,7 +93,7 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
           </button>
           <button
             onClick={onLogout}
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-base text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
+            className="flex items-center gap-3 rounded-lg px-3 py-2 text-base text-muted-foreground transition-colors hover:text-destructive"
           >
             <LogOut size={ICON_SIZE.nav} />
             <span className={`${collapsed ? "hidden" : ""}`}>Logout</span>
