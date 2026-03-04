@@ -6,12 +6,12 @@ import type {
   FavoriteRoute,
   DashboardMetrics,
 } from "@/types";
-import { ReportCategory, ReportStatus } from "@/types";
+import { NotificationCategory, ReportCategory, ReportStatus } from "@/types";
 
 export const mockRoutes: BusRoute[] = [
   {
     id: "r1",
-    name: "Half Way Tree → Downtown Kingston",
+    name: "Half Way Tree to Downtown Kingston",
     number: "1A",
     color: "hsl(48, 96%, 53%)",
     origin: "Half Way Tree",
@@ -27,7 +27,7 @@ export const mockRoutes: BusRoute[] = [
   },
   {
     id: "r2",
-    name: "Portmore → Kingston",
+    name: "Portmore to Kingston",
     number: "2B",
     color: "hsl(160, 60%, 36%)",
     origin: "Portmore Mall",
@@ -42,7 +42,7 @@ export const mockRoutes: BusRoute[] = [
   },
   {
     id: "r3",
-    name: "Papine → Cross Roads",
+    name: "Papine to Cross Roads",
     number: "3C",
     color: "hsl(0, 0%, 15%)",
     origin: "Papine",
@@ -57,7 +57,7 @@ export const mockRoutes: BusRoute[] = [
   },
   {
     id: "r4",
-    name: "Spanish Town → Kingston",
+    name: "Spanish Town to Kingston",
     number: "4D",
     color: "hsl(48, 96%, 53%)",
     origin: "Spanish Town",
@@ -79,10 +79,10 @@ export const mockReports: CommunityReport[] = [
 ];
 
 export const mockNotifications: Notification[] = [
-  { id: "n1", title: "Route 1A Delay", message: "Expected 15-minute delay due to traffic on Hope Road.", type: "warning", routeId: "r1", read: false, createdAt: "2026-03-03T08:45:00Z" },
-  { id: "n2", title: "Route 3C Suspended", message: "Service temporarily suspended due to breakdown at Mona.", type: "alert", routeId: "r3", read: false, createdAt: "2026-03-03T09:15:00Z" },
-  { id: "n3", title: "Fare Update", message: "New fares take effect March 10. Check the app for details.", type: "info", read: true, createdAt: "2026-03-02T12:00:00Z" },
-  { id: "n4", title: "Report Resolved", message: "Your report about Papine stop lighting has been resolved.", type: "success", read: false, createdAt: "2026-03-03T07:00:00Z" },
+  { id: "n1", title: "Route 1A Delay", message: "Expected 15-minute delay due to traffic on Hope Road.", notificationCategory: NotificationCategory.Delay, routeId: "r1", read: false, createdAt: "2026-03-03T08:45:00Z" },
+  { id: "n2", title: "Route 3C Suspended", message: "Service temporarily suspended due to breakdown at Mona.", notificationCategory: NotificationCategory.Breakdown, routeId: "r3", read: false, createdAt: "2026-03-03T09:15:00Z" },
+  { id: "n3", title: "Fare Update", message: "New fares take effect March 10. Check the app for details.", notificationCategory: NotificationCategory.Info, read: true, createdAt: "2026-03-02T12:00:00Z" },
+  { id: "n4", title: "Report Resolved", message: "Your report about Papine stop lighting has been resolved.", notificationCategory: NotificationCategory.Success, read: false, createdAt: "2026-03-03T07:00:00Z" },
 ];
 
 export const mockDemandPredictions: DemandPrediction[] = [
@@ -105,8 +105,8 @@ export const mockDemandPredictions: DemandPrediction[] = [
 ];
 
 export const mockFavorites: FavoriteRoute[] = [
-  { routeId: "r1", routeName: "Half Way Tree → Downtown", routeNumber: "1A", nextArrival: 3 },
-  { routeId: "r2", routeName: "Portmore → Kingston", routeNumber: "2B", nextArrival: 7 },
+  { routeId: "r1", routeName: "Half Way Tree to Downtown", origin: "Half Way Tree", destination: "Downtown", routeNumber: "1A", nextArrival: 3 },
+  { routeId: "r2", routeName: "Portmore to Kingston", origin: "Portmore", destination: "Kingston", routeNumber: "2B", nextArrival: 7 },
 ];
 
 export const mockMetrics: DashboardMetrics = {

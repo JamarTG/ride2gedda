@@ -1,15 +1,14 @@
 import {
-  Bus,
-  LayoutDashboard,
-  MapPin,
-  AlertTriangle,
-  Bell,
-  BarChart3,
-  LogOut,
-  Sun,
-  Moon,
-  TestTube,
-} from "lucide-react";
+  IconLogout,
+  IconSun,
+  IconMoon,
+  IconLayoutDashboard,
+  IconMap,
+  IconAlertTriangle,
+  IconBell,
+  IconChartLine,
+} from "@tabler/icons-react";
+
 import { ICON_SIZE } from "@/lib/icons/iconSizes";
 import { useTheme } from "@/hooks/useTheme";
 import { NavLink } from "@/components/NavLink";
@@ -29,11 +28,11 @@ import {
 import React from "react";
 
 const navItems = [
-  { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-  { to: "/routes", icon: MapPin, label: "Routes" },
-  { to: "/reports", icon: AlertTriangle, label: "Reports" },
-  { to: "/notifications", icon: Bell, label: "Alerts" },
-  { to: "/predictions", icon: BarChart3, label: "Predictions" },
+  { to: "/dashboard", icon: IconLayoutDashboard, label: "Dashboard" },
+  { to: "/routes", icon: IconMap, label: "Routes" },
+  { to: "/reports", icon: IconAlertTriangle, label: "Reports" },
+  { to: "/notifications", icon: IconBell, label: "Alerts" },
+  { to: "/predictions", icon: IconChartLine, label: "Predictions" },
 ];
 
 interface AppLayoutProps {
@@ -46,14 +45,14 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
   const collapsed = state === "collapsed";
   const { theme, toggleTheme } = useTheme();
 
-  const ThemeIcon = theme === "light" ? Moon : Sun;
+  const ThemeIcon = theme === "light" ? IconMoon : IconSun;
 
   return (
     <Sidebar collapsible="icon">
       <SidebarContent>
         <div className="flex items-center gap-2 px-3 py-4">
-            <span className={`${collapsed ? "hidden" : ""} font-display text-base font-bold tracking-tight text-primary`}>
-              ride2gedda.com 🇯🇲
+            <span className={`${collapsed ? "hidden" : ""} font-display text-2xl font-bold tracking-tight text-primary`}>
+              ride2gedda.com
             </span>
         </div>
 
@@ -95,7 +94,7 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
             onClick={onLogout}
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-base text-muted-foreground transition-colors hover:text-destructive"
           >
-            <LogOut size={ICON_SIZE.nav} />
+            <IconLogout size={ICON_SIZE.nav} />
             <span className={`${collapsed ? "hidden" : ""}`}>Logout</span>
           </button>
         </div>

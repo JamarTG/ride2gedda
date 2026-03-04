@@ -1,3 +1,5 @@
+import { IconProps } from "@tabler/icons-react";
+
 export enum UserRole {
   Citizen = "citizen",
   Driver = "driver",
@@ -79,6 +81,22 @@ export enum ReportCategory {
   RouteChange = "route_change",
   Other = "other",
 }
+export enum NotificationCategory {
+  Delay = "delay",
+  Safety = "safety",
+  Overcrowding = "overcrowding",
+  Breakdown = "breakdown",
+  RouteChange = "route_change",
+  Info = "informational",
+  Reminder = "reminder",
+  Announcement = "announcement",
+  Success = "success",
+}
+
+export interface CategoryMeta {
+  label: string;
+  Icon: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<SVGSVGElement>>;
+}
 
 export enum ReportStatus {
   Open = "open",
@@ -90,7 +108,7 @@ export interface Notification {
   id: string;
   title: string;
   message: string;
-  type: "info" | "warning" | "alert" | "success";
+  notificationCategory: NotificationCategory;
   routeId?: string;
   read: boolean;
   createdAt: string;
@@ -108,6 +126,8 @@ export interface FavoriteRoute {
   routeName: string;
   routeNumber: string;
   nextArrival: number;
+  origin: string;
+  destination: string;
 }
 
 export interface DashboardMetrics {

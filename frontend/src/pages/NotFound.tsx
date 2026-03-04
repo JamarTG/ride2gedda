@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { AlertTriangle } from "lucide-react";
+import { IconAlertTriangle } from "@tabler/icons-react";
+
 
 const NotFound = () => {
   const location = useLocation();
@@ -13,7 +14,7 @@ const NotFound = () => {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="text-center space-y-3">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-muted">
-          <AlertTriangle className="h-7 w-7 text-warning" />
+          <IconAlertTriangle className="h-7 w-7 text-warning" />
         </div>
         <p className="text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase">Error 404</p>
         <h1 className="font-display text-2xl md:text-3xl font-bold">Page not found</h1>
