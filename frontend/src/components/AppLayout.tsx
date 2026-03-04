@@ -52,7 +52,7 @@ function AppSidebar({ onLogout }: { onLogout: VoidFunction }) {
     <Sidebar collapsible="icon">
       <SidebarContent>
         <div className="flex items-center gap-2 px-3 py-4">
-            <span className={`${collapsed ? "hidden" : ""} font-display text-base font-bold tracking-tight text-primary`}>
+            <span className={`${collapsed ? "hidden" : ""} font-display text-2xl font-bold tracking-tight text-primary`}>
               ride2gedda.com 🇯🇲
             </span>
         </div>

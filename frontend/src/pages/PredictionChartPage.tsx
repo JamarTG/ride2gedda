@@ -45,7 +45,7 @@ export default function PredictionChartPage() {
 
       <Card className="border">
         <CardHeader className="pb-2">
-          <CardTitle className="font-display text-base">Hourly Ridership Forecast</CardTitle>
+          <CardTitle className="text-base">Hourly Ridership Forecast</CardTitle>
         </CardHeader>
         <CardContent>
           {isLoading ? (
