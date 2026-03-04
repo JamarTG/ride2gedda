@@ -21,10 +21,10 @@ export default function PredictionChartPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="font-display text-2xl font-bold flex items-center gap-2">
+        <h1 className="font-display text-2xl md:text-3xl font-bold flex items-center gap-2">
           <BarChart3 className="h-6 w-6 text-primary" /> AI Demand Predictions
         </h1>
-        <p className="text-sm text-muted-foreground">
+        <p className="mt-1 text-sm text-muted-foreground">
           Machine learning model forecasting rider demand across all routes
         </p>
       </div>

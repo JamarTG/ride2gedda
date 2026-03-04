@@ -15,12 +15,12 @@ export default function RoutesPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="font-display text-2xl font-bold">Bus Routes</h1>
-        <p className="text-sm text-muted-foreground">Browse and search all JUTC routes</p>
+        <h1 className="font-display text-2xl md:text-3xl font-bold">Bus Routes</h1>
+        <p className="mt-1 text-sm text-muted-foreground">Browse and search all JUTC routes</p>
       </div>
 
       <div className="relative">
-        <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
           placeholder="Search routes, stops, destinations…"
           value={search}

@@ -9,6 +9,13 @@ import { useNotifications } from "@/hooks/useNotifications";
 
 const fadeIn = { hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } };
 
+function getGreeting() {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Morning";
+  if (hour < 18) return "Afternoon";
+  return "Evening";
+}
+
 export default function DashboardPage() {
   const { data: metrics, isLoading: metricsLoading } = useDashboardMetrics();
   const { data: favorites } = useFavorites();
@@ -35,11 +42,10 @@ export default function DashboardPage() {
 
       
       <div>
-        <h1 className="font-display text-2xl font-bold md:text-3xl">Dashboard</h1>
-        <p className="text-sm text-muted-foreground">Here's what's happening across Kingston's bus network</p>
+        <h1 className="font-display text-2xl md:text-3xl font-bold">Good {getGreeting()}, Commuter 👋</h1>
+        <p className="mt-1 text-sm text-muted-foreground">Here's what's happening across Kingston's bus network</p>
       </div>
 
-      
       <motion.div
         className="grid grid-cols-2 gap-3 md:grid-cols-4"
         variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
@@ -67,7 +73,6 @@ export default function DashboardPage() {
         ))}
       </motion.div>
 
-      
       <section>
         <div className="mb-3 flex items-center justify-between">
           <h2 className="font-display text-lg font-semibold flex items-center gap-2">
