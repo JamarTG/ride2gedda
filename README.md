@@ -3,7 +3,10 @@
 <br><br><br>
 A community-driven Jamaican bus commute app that helps riders plan and navigate JUTC bus journeys more confidently using official schedules, community reports, and AI-assisted predictions.
 
+<br><br>
 
+<p>Description: JUTC bus travel smarter with community insight, bus reporting and prediction</p>
+<p>Stack: C# ASP.NET Core, PostgreSQL, SignalR, React, Typescript</p>
 
 ## Features
 
