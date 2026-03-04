@@ -1,0 +1,15 @@
+# VS / .NET
+.vs/
+*.user
+*.suo
+
+# Build outputs
+server/bin/
+server/obj/
+
+# Node / frontend
+web/node_modules/
+web/dist/
+
+# Logs and misc
+*.log
