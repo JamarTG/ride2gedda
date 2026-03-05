@@ -1,19 +1,19 @@
-using BusSystem.Models.Enums;
+using Ride2Gedda.Enums;
 
-namespace BusSystem.Models
+namespace Ride2Gedda.Models
 {
     public class Report
     {
         public int Id { get; set; }
 
-        public int UserId { get; set; }
-        public User User { get; set; } = null!;
+        public required string UserId { get; set; }
+        public required ApplicationUser User { get; set; }
 
-        public int? RouteId { get; set; }
-        public Route? Route { get; set; }
+        public int? BusRouteId { get; set; }
+        public BusRoute? BusRoute { get; set; }
 
-        public string Title { get; set; } = null!;
-        public string Description { get; set; } = null!;
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public ReportCategory Category { get; set; }
         public ReportStatus Status { get; set; } = ReportStatus.Open;
 
