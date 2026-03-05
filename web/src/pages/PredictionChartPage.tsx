@@ -15,9 +15,6 @@ import {
 
 export default function PredictionChartPage() {
   const { data, isLoading } = useDemandPredictions();
-
-  const peakHour = data?.reduce((max, d) => (d.predicted > max.predicted ? d : max), data[0]);
-
   return (
     <div className="space-y-5">
       <div>
@@ -29,20 +26,6 @@ export default function PredictionChartPage() {
         </p>
       </div>
 
-      {/* {peakHour && (
-        <Card className="border bg-primary/10">
-          <CardContent className="flex items-center gap-3 p-4">
-            <IconTrendingUp className="h-5 w-5 text-primary" />
-            <div>
-              <p className="text-sm font-semibold">Peak Hour: {peakHour.label}</p>
-              <p className="text-xs text-muted-foreground">
-                Predicted {peakHour.predicted.toLocaleString()} riders — plan extra buses
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      )} */}
-
       <Card className="border">
         <CardHeader className="pb-2">
           <CardTitle className="text-base">Hourly Ridership Forecast</CardTitle>
@@ -53,16 +36,6 @@ export default function PredictionChartPage() {
           ) : (
             <ResponsiveContainer width="100%" height={320}>
               <AreaChart data={data} margin={{ top: 10, right: 10, left: -15, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="predicted" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="hsl(48, 96%, 53%)" stopOpacity={0.4} />
-                    <stop offset="95%" stopColor="hsl(48, 96%, 53%)" stopOpacity={0} />
-                  </linearGradient>
-                  <linearGradient id="actual" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="hsl(160, 60%, 36%)" stopOpacity={0.4} />
-                    <stop offset="95%" stopColor="hsl(160, 60%, 36%)" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(48, 10%, 80%)" opacity={0.3} />
                 <XAxis dataKey="label" tick={{ fontSize: 11 }} />
                 <YAxis tick={{ fontSize: 11 }} />
@@ -70,7 +43,7 @@ export default function PredictionChartPage() {
                   contentStyle={{
                     borderRadius: "0.75rem",
                     border: "none",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.12)",
+                    boxShadow: "none",
                     fontSize: 12,
                   }}
                 />
@@ -80,7 +53,7 @@ export default function PredictionChartPage() {
                   dataKey="predicted"
                   stroke="hsl(48, 96%, 53%)"
                   strokeWidth={2}
-                  fill="url(#predicted)"
+                  fill="none"
                   name="Predicted"
                 />
                 <Area
@@ -88,7 +61,7 @@ export default function PredictionChartPage() {
                   dataKey="actual"
                   stroke="hsl(160, 60%, 36%)"
                   strokeWidth={2}
-                  fill="url(#actual)"
+                  fill="none"
                   name="Actual"
                 />
               </AreaChart>

@@ -1,15 +1,15 @@
+using Ride2Gedda.Enums;
+
 namespace Ride2Gedda.Models
 {
-    public class BusRouteViaStop
+    public class BusRouteSchedule
     {
         public int Id { get; set; }
-
         public int BusRouteId { get; set; }
         public required BusRoute BusRoute { get; set; }
 
-        public int StopId { get; set; }
-        public required Stop Stop { get; set; }
+        public DayType? DayType { get; set; } 
 
-        public int Sequence { get; set; }
+        public ICollection<ScheduleStop> Stops { get; set; } = [];
     }
 }

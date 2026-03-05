@@ -1,13 +1,13 @@
-namespace BusSystem.Models
+namespace Ride2Gedda.Models
 {
     public class Stop
     {
         public int Id { get; set; }
-        public string Name { get; set; } = null!;
+        public required string Name { get; set;}
 
         public ICollection<ScheduleStop> ScheduleStops { get; set; } = [];
-        public ICollection<Route> OriginRoutes { get; set; } = [];
-        public ICollection<Route> DestinationRoutes { get; set; } = [];
-        public ICollection<RouteViaStop> ViaRoutes { get; set; } = [];
+        public ICollection<BusRoute> OriginBusRoutes { get; set; } = [];
+        public ICollection<BusRoute> DestinationBusRoutes { get; set; } = [];
+        public ICollection<BusRouteViaStop> ViaBusRoutes { get; set; } = [];
     }
 }

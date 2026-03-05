@@ -1,4 +1,4 @@
-namespace BusSystem.Models.Enums
+namespace Ride2Gedda.Enums
 {
     public enum DayType
     {

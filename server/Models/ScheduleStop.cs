@@ -1,16 +1,14 @@
-using System;
-
-namespace BusSystem.Models
+namespace Ride2Gedda.Models
 {
     public class ScheduleStop
     {
         public int Id { get; set; }
 
-        public int RouteScheduleId { get; set; }
-        public RouteSchedule RouteSchedule { get; set; } = null!;
+        public int BusRouteScheduleId { get; set; }
+        public required BusRouteSchedule BusRouteSchedule { get; set; }
 
         public int StopId { get; set; }
-        public Stop Stop { get; set; } = null!;
+        public required Stop Stop { get; set; }
 
         public int Sequence { get; set; } 
         public TimeSpan? ArrivalTime { get; set; }
