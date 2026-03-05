@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { useSignup } from "@/hooks/useSignup";
 import AppLayout from "@/components/AppLayout";
 import AuthPage from "@/pages/AuthPage";
 import DashboardPage from "@/pages/DashboardPage";
@@ -17,12 +18,16 @@ import NotFound from "@/pages/NotFound";
 const queryClient = new QueryClient();
 
 function AppRoutes() {
-  const { isAuthenticated, login, signup, logout } = useAuth();
+  const { isAuthenticated, login, logout } = useAuth();
+  const signupMutation = useSignup();
 
   if (!isAuthenticated) {
     return (
       <Routes>
-        <Route path="/auth" element={<AuthPage onLogin={login} onSignup={signup} />} />
+        <Route
+          path="/auth"
+          element={<AuthPage onLogin={login} onSignup={(creds) => signupMutation.mutateAsync(creds).then(() => undefined)} />}
+        />
         <Route path="*" element={<Navigate to="/auth" replace />} />
       </Routes>
     );

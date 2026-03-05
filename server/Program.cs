@@ -18,6 +18,14 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<Ride2GeddaDBContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.AddCors(options =>
+   {
+       options.AddPolicy("Allow8080",
+           builder => builder.WithOrigins("http://localhost:8080") //for now
+                             .AllowAnyMethod()
+                             .AllowAnyHeader());
+   });
+
 builder.Services.AddDbContext<Ride2GeddaDBContext>(options =>
     options.UseNpgsql(connectionString));
 
@@ -33,8 +41,12 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseCors("Allow8080");
+
 app.MapControllers();
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.Run();
