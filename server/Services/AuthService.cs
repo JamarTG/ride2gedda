@@ -8,17 +8,18 @@ namespace Ride2Gedda.Services
     {
         private readonly UserManager<ApplicationUser> _userManager = userManager;
 
-        public async Task<RegisterDto> RegisterAsync (RegisterDto dto)
+        public async Task<RegisterResponseDto> RegisterAsync(RegisterDto dto)
         {
             var existingUser = await _userManager.FindByEmailAsync(dto.Email);
 
-            if(existingUser is not null)
+            if (existingUser is not null)
             {
-                return new RegisterDto
+                return new RegisterResponseDto
                 {
                     ErrorMessage = "User with this email already exists"
                 };
-            } 
+
+            }
 
 
             ApplicationUser newUser = new()
@@ -26,20 +27,24 @@ namespace Ride2Gedda.Services
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 Email = dto.Email,
+                UserName = dto.Email
             };
 
             var results = await _userManager.CreateAsync(newUser, dto.Password);
-            
-            if(!results.Succeeded){
-                return new RegisterDto
-                {
-                    ErrorMessage = string.Join(", ", results.Errors.Select(e => e.Description)) 
-                };
-            } 
 
-
-            return new RegisterDto()
+            if (!results.Succeeded)
             {
+
+                return new RegisterResponseDto
+                {
+                    ErrorMessage = results.Errors.First().Description
+                };
+            }
+
+
+            return new RegisterResponseDto()
+            {
+                Id = newUser.Id,
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 Email = dto.Email,

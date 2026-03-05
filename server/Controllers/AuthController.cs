@@ -19,17 +19,23 @@ namespace Ride2Gedda.Controllers
                 return BadRequest(ModelState);
             }
 
-            RegisterDto registerResult = await _service.RegisterAsync(dto);
+            RegisterResponseDto registerResult = await _service.RegisterAsync(dto);
 
-            if(!string.IsNullOrEmpty(registerResult.ErrorMessage))
-            {   
-                return BadRequest();
-                
+            if (!string.IsNullOrEmpty(registerResult.ErrorMessage))
+            {
+                return BadRequest(new ProblemDetails
+                {
+                    Title = "Registration Error",
+                    Status = StatusCodes.Status400BadRequest,
+                    Detail = registerResult.ErrorMessage,
+                });
+
             }
 
-            return Ok();
+            return Ok(registerResult);
         }
 
-      
+
+
     }
 }

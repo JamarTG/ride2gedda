@@ -4,6 +4,6 @@ namespace Ride2Gedda.Services
 {
     public interface IAuthService
     {
-        Task<RegisterDto> RegisterAsync (RegisterDto dto);
+        Task<RegisterResponseDto> RegisterAsync (RegisterDto dto);
     }
 }

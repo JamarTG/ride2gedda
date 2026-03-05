@@ -19,9 +19,6 @@ namespace Ride2Gedda.Dto
         [StringLength(256)]
         [Required]
         public string Password { get; set; } = string.Empty;
-
-        public string? ErrorMessage { get; set; }
-        public string? SuccessMessage { get; set; }
     }
 }
 
