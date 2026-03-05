@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace Ride2Gedda.Dto
 {
     public class RegisterResponseDto
