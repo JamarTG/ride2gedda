@@ -11,6 +11,9 @@ namespace Ride2Gedda.Models
         [Required, MaxLength(50)]
         public string LastName { get; set; } = string.Empty;
 
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiry { get; set; }
+
         public ICollection<Report> Reports { get; set; } = [];
         public ICollection<FavouriteBusRoute> FavouriteBusRoutes { get; set; } = [];
         public ICollection<Notification> Notifications { get; set; } = [];

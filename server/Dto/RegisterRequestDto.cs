@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ride2Gedda.Dto
 {
-    public class RegisterDto
+    public class RegisterRequestDto
     {
         [Required]
         [StringLength(100)]
@@ -21,4 +21,3 @@ namespace Ride2Gedda.Dto
         public string Password { get; set; } = string.Empty;
     }
 }
-

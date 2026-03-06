@@ -2,12 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Ride2Gedda.Models;
 using Ride2Gedda.Services;
+using Ride2Gedda.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+var jwtSettings = builder.Configuration.GetSection("Jwt").Get<JwtSettings>()!;
 
 var connectionString =
     builder.Configuration.GetConnectionString("DefaultConnection")
@@ -17,6 +18,9 @@ var connectionString =
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<Ride2GeddaDBContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.AddScoped<JwtService>();
+builder.Services.AddScoped<AuthService>();
 
 builder.Services.AddCors(options =>
    {
