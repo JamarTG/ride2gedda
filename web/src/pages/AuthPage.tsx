@@ -24,8 +24,8 @@ interface AuthPageProps {
 
 export default function AuthPage({ onLogin, onSignup }: AuthPageProps) {
   const [mode, setMode] = useState<"login" | "signup">("login");
-  const [email, setEmail] = useState("commuter@jutc.com");
-  const [password, setPassword] = useState("password123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [loading, setLoading] = useState(false);

@@ -36,6 +36,7 @@ function AppRoutes() {
   return (
     <AppLayout onLogout={logout}>
       <Routes>
+        <Route path="/auth" element={<Navigate to="/dashboard" replace />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/routes" element={<RoutesPage />} />
         <Route path="/routes/:id" element={<RouteDetailPage />} />
